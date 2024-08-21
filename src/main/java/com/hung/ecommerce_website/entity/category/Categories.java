@@ -1,4 +1,4 @@
-package com.hung.ecommerce_website.entity;
+package com.hung.ecommerce_website.entity.category;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,13 +11,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Order_Details")
-public class OrderDetails {
+@Table(name = "Categories")
+public class Categories {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "orders_id")
-    private Orders orders;
+    private String name;
+    private String description;
 }

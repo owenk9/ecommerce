@@ -1,9 +1,7 @@
-package com.hung.ecommerce_website.entity;
-
-import lombok.Data;
+package com.hung.ecommerce_website.entity.user;
 
 public enum Role {
-    EMPLOYEE, ADMIN;
+    EMPLOYEE,USER, ADMIN;
     public String getRoleName() {
         return this.name();
     }

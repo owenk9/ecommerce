@@ -3,15 +3,13 @@ package com.hung.ecommerce_website.service;
 import com.hung.ecommerce_website.auth.AuthenticationRequest;
 import com.hung.ecommerce_website.auth.AuthenticationResponse;
 import com.hung.ecommerce_website.auth.RegisterRequest;
-import com.hung.ecommerce_website.entity.Role;
-import com.hung.ecommerce_website.entity.Users;
+import com.hung.ecommerce_website.entity.user.Role;
+import com.hung.ecommerce_website.entity.user.Users;
 import com.hung.ecommerce_website.repo.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +23,9 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(RegisterRequest request) {
         var user = Users.builder()
-                .userName(request.getUserName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .userName(request.getUserName())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .address(request.getAddress())
@@ -44,7 +42,6 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        log.info("Authenticating user with email: {}", request.getEmail());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),

@@ -1,7 +1,8 @@
-package com.hung.ecommerce_website.entity;
+package com.hung.ecommerce_website.entity.user;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+//import com.hung.ecommerce_website.entity.order.Orders;
+import com.hung.ecommerce_website.entity.order.Orders;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,7 +38,7 @@ public class Users implements UserDetails {
     private LocalDateTime updatedAt;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Orders> orders;
 
     @Override

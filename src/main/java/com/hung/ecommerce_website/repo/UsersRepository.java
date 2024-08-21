@@ -1,6 +1,6 @@
 package com.hung.ecommerce_website.repo;
 
-import com.hung.ecommerce_website.entity.Users;
+import com.hung.ecommerce_website.entity.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
